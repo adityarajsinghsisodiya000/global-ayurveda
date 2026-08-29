@@ -3,6 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const DataContext = createContext();
 
 const defaultData = {
+  logo: '',
   contact: {
     phone: '8989656675',
     whatsapp: '8989656675',

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall, ChevronRight } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
-export default function Navbar({ activeSection, setActiveSection, contact: _contact }) {
+export default function Navbar({ activeSection, setActiveSection, contact: _contact, logo = '' }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -38,7 +38,7 @@ export default function Navbar({ activeSection, setActiveSection, contact: _cont
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#06180e]/95 backdrop-blur-md py-2.5 shadow-xl border-b border-[#d4af37]/20' : 'bg-[#071c10] py-3.5 border-b border-[#d4af37]/15'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div onClick={() => scrollToSection('home')} className="cursor-pointer">
-          <BrandLogo size="medium" />
+          <BrandLogo size="medium" logo={logo} />
         </div>
 
         <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">

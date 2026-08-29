@@ -11,7 +11,7 @@ const defaultServices = [
   'Lifestyle Guidance',
 ];
 
-export default function Footer({ contact, onOpenPrivacy, onOpenTerms }) {
+export default function Footer({ contact, logo = '', onOpenPrivacy, onOpenTerms }) {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
@@ -64,7 +64,7 @@ export default function Footer({ contact, onOpenPrivacy, onOpenTerms }) {
 
           {/* Column 1: Brand Info & Socials */}
           <div className="lg:col-span-1">
-            <BrandLogo size="medium" />
+            <BrandLogo size="medium" logo={logo} />
             <p className="text-xs text-[#9cb5a5] font-light leading-relaxed mt-4">
               We are here to help you on your journey towards better health and natural living through authentic Indian Ayurvedic wisdom and modern science.
             </p>

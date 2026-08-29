@@ -149,7 +149,7 @@ function DashboardInner() {
         </div>
 
         <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto">
-          {activeTab === 'overview' && <OverviewTab data={data} />}
+          {activeTab === 'overview' && <OverviewTab data={data} updateData={updateData} />}
           {activeTab === 'contact' && <ContactTab data={data} updateData={updateData} />}
           {activeTab === 'hero' && <HeroTab data={data} updateData={updateData} />}
           {activeTab === 'about' && <AboutTab data={data} updateData={updateData} />}
@@ -208,7 +208,7 @@ function SaveButton({ onClick, label = 'Save Changes' }) {
   );
 }
 
-function OverviewTab({ data }) {
+function OverviewTab({ data, updateData }) {
   return (
     <div>
       <SectionTitle icon={<LayoutDashboard size={20} />} title="Dashboard Overview" subtitle="Welcome back" />
@@ -217,6 +217,13 @@ function OverviewTab({ data }) {
         <Card><div className="flex items-center gap-3"><div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center"><BookOpen size={18} className="text-[#d4af37]" /></div><div><p className="text-2xl font-bold text-white">{data.articles?.length || 0}</p><p className="text-xs text-[#7d9b87]">Articles</p></div></div></Card>
         <Card><div className="flex items-center gap-3"><div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center"><Award size={18} className="text-[#d4af37]" /></div><div><p className="text-2xl font-bold text-white">{data.whyUs?.length || 0}</p><p className="text-xs text-[#7d9b87]">Why Us Points</p></div></div></Card>
       </div>
+
+      {/* Logo Upload */}
+      <Card>
+        <h3 className="text-sm font-bold text-white mb-3">Website Logo</h3>
+        <p className="text-xs text-[#7d9b87] mb-3">Upload your brand logo (shows in navbar & footer)</p>
+        <ImageUploader label="Brand Logo" currentImage={data.logo || ''} onUpload={(img) => updateData('logo', img)} onRemove={() => updateData('logo', '')} />
+      </Card>
     </div>
   );
 }
