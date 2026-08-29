@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, CheckCircle2 } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
 const defaultServices = [

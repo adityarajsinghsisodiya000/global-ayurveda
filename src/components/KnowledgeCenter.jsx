@@ -15,7 +15,7 @@ export default function KnowledgeCenter({ articles, onArticleClick }) {
             <h2 className="font-serif-title text-3xl sm:text-4xl md:text-5xl font-bold text-[#faf5ea] tracking-wide">AYURVEDA KNOWLEDGE CENTER</h2>
             <p className="text-sm md:text-base text-[#a3c2af] font-light mt-1">Learn, Heal & Live Better</p>
           </div>
-          <button onClick={() => onArticleClick && onArticleClick()} className="self-start md:self-auto inline-flex items-center gap-2 bg-[#0c2f1d] hover:bg-[#124229] border border-[#d4af37]/40 text-[#f7e28b] text-xs font-bold px-5 py-2.5 rounded uppercase tracking-wider transition-all duration-300 shadow-md group">
+          <button onClick={() => { const el = document.getElementById('knowledge'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }} className="self-start md:self-auto inline-flex items-center gap-2 bg-[#0c2f1d] hover:bg-[#124229] border border-[#d4af37]/40 text-[#f7e28b] text-xs font-bold px-5 py-2.5 rounded uppercase tracking-wider transition-all duration-300 shadow-md group">
             <span>VIEW ALL ARTICLES</span>
             <ArrowRight size={14} className="text-[#d4af37] group-hover:translate-x-1 transition-transform" />
           </button>

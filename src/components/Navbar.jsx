@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall, ChevronRight } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
-export default function Navbar({ activeSection, setActiveSection, contact: _contact, logo = '' }) {
+export default function Navbar({ activeSection, setActiveSection, logo = '' }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 

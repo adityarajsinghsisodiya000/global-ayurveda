@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { X, ShieldCheck, Leaf, MessageSquare } from 'lucide-react';
 import ProductCardIllustration from './ProductCardIllustration';
 
 export default function ProductModal({ product, contact, onClose }) {
-  const [inquirySent, setInquirySent] = useState(false);
   if (!product) return null;
 
   const whatsapp = contact?.whatsapp || '8989656675';
@@ -11,7 +10,6 @@ export default function ProductModal({ product, contact, onClose }) {
   const handleInquire = () => {
     const message = `Hello Global Ayurveda Team India, I am interested in inquiring about ${product.name} (${product.subtitle}). Please send me details regarding pricing and ordering.`;
     window.open(`https://wa.me/91${whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
-    setInquirySent(true);
   };
 
   return (

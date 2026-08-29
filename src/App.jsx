@@ -38,7 +38,7 @@ function Website() {
 
   return (
     <div className="min-h-screen bg-[#071c10] text-[#f4eee3] flex flex-col font-sans selection:bg-[#d4af37] selection:text-[#071c10]">
-      <Navbar activeSection={activeSection} setActiveSection={setActiveSection} contact={data.contact} logo={data.logo} />
+      <Navbar activeSection={activeSection} setActiveSection={setActiveSection} logo={data.logo} />
 
       <main className="flex-grow">
         <Hero

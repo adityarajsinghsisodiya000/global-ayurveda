@@ -6,8 +6,8 @@ export default function Products({ productsList, onSelectProduct, onViewAllClick
   const [currentIndex, setCurrentIndex] = useState(0);
   const products = productsList || [];
 
-  const handlePrev = () => setCurrentIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1));
-  const handleNext = () => setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
+  const handlePrev = () => { if (products.length > 0) setCurrentIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1)); };
+  const handleNext = () => { if (products.length > 0) setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1)); };
 
   return (
     <section id="products" className="py-16 md:py-24 bg-[#faf6ef] text-[#071c10] relative overflow-hidden">

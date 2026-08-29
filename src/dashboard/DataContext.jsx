@@ -176,8 +176,12 @@ export function DataProvider({ children }) {
   const [data, setData] = useState(() => {
     const saved = localStorage.getItem('globalAyurveda_data');
     if (saved) {
-      const parsed = JSON.parse(saved);
-      return { ...defaultData, ...parsed, contact: { ...defaultData.contact, ...(parsed.contact || {}) } };
+      try {
+        const parsed = JSON.parse(saved);
+        return { ...defaultData, ...parsed, contact: { ...defaultData.contact, ...(parsed.contact || {}) } };
+      } catch {
+        return defaultData;
+      }
     }
     return defaultData;
   });
