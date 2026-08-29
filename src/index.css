@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+Devanagari:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #092215;
+  --bg-dark-card: #0e301e;
+  --bg-cream: #faf6ef;
+  --bg-cream-card: #ffffff;
+  --gold-primary: #d4af37;
+  --gold-light: #eac866;
+  --gold-dark: #b89324;
+  --text-dark: #12281b;
+  --text-cream: #f4eee3;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-cream);
+  overflow-x: hidden;
+}
+
+.font-serif-title {
+  font-family: 'Cinzel', serif;
+}
+
+.font-serif-body {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-hindi {
+  font-family: 'Noto Serif Devanagari', 'Cormorant Garamond', serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #06180e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e452e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Ornaments & Decorative Lines */
+.gold-line-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.gold-line-ornament::before,
+.gold-line-ornament::after {
+  content: '';
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+/* Card Glow & Glass Effects */
+.ayur-card-glow {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ayur-card-glow:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.4), 0 0 20px 0 rgba(212, 175, 55, 0.2);
+}
+
+.product-card-glow {
+  transition: all 0.35s ease;
+}
+.product-card-glow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -10px rgba(12, 38, 23, 0.15);
+}
+
+/* Hide Scrollbar for Horizontal Touch Swiping on Mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
