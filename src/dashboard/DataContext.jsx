@@ -175,7 +175,11 @@ const defaultData = {
 export function DataProvider({ children }) {
   const [data, setData] = useState(() => {
     const saved = localStorage.getItem('globalAyurveda_data');
-    return saved ? JSON.parse(saved) : defaultData;
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      return { ...defaultData, ...parsed, contact: { ...defaultData.contact, ...(parsed.contact || {}) } };
+    }
+    return defaultData;
   });
 
   useEffect(() => {
