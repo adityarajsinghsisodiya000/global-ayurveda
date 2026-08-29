@@ -9,8 +9,7 @@ export default function Navbar({ activeSection, setActiveSection, contact: _cont
   const navItems = [
     { name: 'HOME', id: 'home' },
     { name: 'ABOUT US', id: 'about' },
-    { name: 'AYURVEDA', id: 'ayurveda' },
-    { name: 'WELLNESS', id: 'wellness' },
+    { name: 'AYURVEDA & WELLNESS', id: 'ayurveda' },
     { name: 'PRODUCTS', id: 'products' },
     { name: 'KNOWLEDGE', id: 'knowledge' },
     { name: 'CONTACT', id: 'contact' },
