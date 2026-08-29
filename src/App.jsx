@@ -10,6 +10,8 @@ import KnowledgeCenter from './components/KnowledgeCenter';
 import WhyGlobalAyurveda from './components/WhyGlobalAyurveda';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
+import AyurvedaModal from './components/AyurvedaModal';
+import ArticleModal from './components/ArticleModal';
 import LegalModal from './components/LegalModal';
 import LoginPage from './dashboard/LoginPage';
 import Dashboard from './dashboard/Dashboard';
@@ -18,6 +20,8 @@ function Website() {
   const { data } = useData();
   const [activeSection, setActiveSection] = useState('home');
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedAyurvedaCard, setSelectedAyurvedaCard] = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState(null);
   const [legalModalType, setLegalModalType] = useState(null);
 
   const scrollTo = (id) => {
@@ -28,8 +32,7 @@ function Website() {
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
     }
   };
 
@@ -48,7 +51,7 @@ function Website() {
 
         <AyurvedaWellness
           cards={data.ayurvedaCards}
-          onCardSelect={() => scrollTo('products')}
+          onCardSelect={(card) => setSelectedAyurvedaCard(card)}
         />
 
         <Products
@@ -59,7 +62,7 @@ function Website() {
 
         <KnowledgeCenter
           articles={data.articles}
-          onArticleClick={() => scrollTo('contact')}
+          onArticleClick={(article) => setSelectedArticle(article)}
         />
 
         <WhyGlobalAyurveda items={data.whyUs} />
@@ -76,6 +79,20 @@ function Website() {
           product={selectedProduct}
           contact={data.contact}
           onClose={() => setSelectedProduct(null)}
+        />
+      )}
+
+      {selectedAyurvedaCard && (
+        <AyurvedaModal
+          card={selectedAyurvedaCard}
+          onClose={() => setSelectedAyurvedaCard(null)}
+        />
+      )}
+
+      {selectedArticle && (
+        <ArticleModal
+          article={selectedArticle}
+          onClose={() => setSelectedArticle(null)}
         />
       )}
 
