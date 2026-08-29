@@ -5,7 +5,7 @@ import {
   LogOut, LayoutDashboard, Phone,
   Image, FileText, Settings, Save, RotateCcw,
   Plus, Trash2, Eye, EyeOff, Lock, Menu, X,
-  Package, BookOpen, Award, Edit3, Upload, Leaf
+  Package, BookOpen, Award, Edit3, Upload, Leaf, Sparkles
 } from 'lucide-react';
 
 function ImageUploader({ label, currentImage, onUpload, onRemove }) {
@@ -222,6 +222,17 @@ function OverviewTab({ data }) {
 }
 
 function ContactTab({ data, updateData }) {
+  const services = data.contact?.services || [];
+  const footerProducts = data.contact?.footerProducts || [];
+
+  const addService = () => { updateData('contact.services', [...services, 'New Service']); };
+  const removeService = (idx) => { updateData('contact.services', services.filter((_, i) => i !== idx)); };
+  const updateService = (idx, value) => { const arr = [...services]; arr[idx] = value; updateData('contact.services', arr); };
+
+  const addFooterProduct = () => { updateData('contact.footerProducts', [...footerProducts, 'New Product']); };
+  const removeFooterProduct = (idx) => { updateData('contact.footerProducts', footerProducts.filter((_, i) => i !== idx)); };
+  const updateFooterProduct = (idx, value) => { const arr = [...footerProducts]; arr[idx] = value; updateData('contact.footerProducts', arr); };
+
   return (
     <div>
       <SectionTitle icon={<Phone size={20} />} title="Contact Information" subtitle="Manage contact details" />
@@ -235,6 +246,38 @@ function ContactTab({ data, updateData }) {
         </div>
         <div className="mt-6"><SaveButton onClick={() => {}} /></div>
       </Card>
+
+      {/* Footer Services */}
+      <div className="mt-6">
+        <SectionTitle icon={<Sparkles size={20} />} title="Footer - Our Services" subtitle="Services shown in footer" />
+        <Card>
+          <div className="space-y-3">
+            <button onClick={addService} className="flex items-center gap-2 bg-[#d4af37] hover:bg-[#e6c24d] text-[#071c10] font-bold text-xs px-4 py-2.5 rounded-lg shadow transition-all uppercase tracking-wider"><Plus size={14} /> Add Service</button>
+            {services.map((service, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <input value={service} onChange={(e) => updateService(idx, e.target.value)} className="flex-1 bg-[#071c10] border border-[#1d462d] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#d4af37] transition-colors" placeholder="Service name" />
+                <button onClick={() => removeService(idx)} className="p-2 text-red-400 hover:text-red-300 transition-colors"><Trash2 size={14} /></button>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+
+      {/* Footer Products */}
+      <div className="mt-6">
+        <SectionTitle icon={<Package size={20} />} title="Footer - Our Products" subtitle="Products shown in footer" />
+        <Card>
+          <div className="space-y-3">
+            <button onClick={addFooterProduct} className="flex items-center gap-2 bg-[#d4af37] hover:bg-[#e6c24d] text-[#071c10] font-bold text-xs px-4 py-2.5 rounded-lg shadow transition-all uppercase tracking-wider"><Plus size={14} /> Add Product</button>
+            {footerProducts.map((product, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <input value={product} onChange={(e) => updateFooterProduct(idx, e.target.value)} className="flex-1 bg-[#071c10] border border-[#1d462d] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#d4af37] transition-colors" placeholder="Product name" />
+                <button onClick={() => removeFooterProduct(idx)} className="p-2 text-red-400 hover:text-red-300 transition-colors"><Trash2 size={14} /></button>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }

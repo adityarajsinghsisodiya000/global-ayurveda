@@ -9,6 +9,15 @@ const defaultData = {
     email: 'globalayurvedateamindia@gmail.com',
     address: 'Freeganj Ujjain 456010 (M.P.)',
     instagram: 'global_ayurveda_team_india',
+    services: [
+      'Ayurvedic Consultation',
+      'Yoga & Meditation',
+      'Naturopathy',
+      'Health Check-up Camps',
+      'Wellness Programs',
+      'Lifestyle Guidance',
+    ],
+    footerProducts: ['Arogya Active', 'Nari Active', 'Joint Active', 'Face Active', 'Hair Active', 'BetaCell Active'],
   },
   hero: {
     tagline: 'ANCIENT WISDOM. MODERN WELLNESS.',
