@@ -74,7 +74,7 @@ export default function BrandLogo({ size = 'medium', lightMode = false }) {
       </div>
 
       {/* Brand Text Block */}
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center text-center">
         <span
           className={`font-serif-title font-bold tracking-wider leading-none ${
             lightMode ? 'text-[#092215]' : 'text-white'
