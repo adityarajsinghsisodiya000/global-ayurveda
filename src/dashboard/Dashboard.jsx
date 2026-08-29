@@ -440,7 +440,7 @@ function ProductsTab({ data, updateData }) {
 }
 
 function ArticlesTab({ data, updateData }) {
-  const addArticle = () => { updateData('articles', [...(data.articles || []), { id: Date.now(), title: 'New Article Title', desc: 'Article description', tag: 'General', readTime: '4 min read', image: '' }]); };
+  const addArticle = () => { updateData('articles', [...(data.articles || []), { id: Date.now(), title: 'New Article Title', desc: 'Article description', fullText: 'Full article content here...', tag: 'General', readTime: '4 min read', image: '' }]); };
   const removeArticle = (idx) => { updateData('articles', data.articles.filter((_, i) => i !== idx)); };
   const updateArticle = (idx, key, value) => { const articles = [...data.articles]; articles[idx] = { ...articles[idx], [key]: value }; updateData('articles', articles); };
 
@@ -460,6 +460,10 @@ function ArticlesTab({ data, updateData }) {
               <div className="grid grid-cols-2 gap-2">
                 <input value={article.tag} onChange={(e) => updateArticle(idx, 'tag', e.target.value)} className="bg-[#071c10] border border-[#1d462d] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#d4af37] transition-colors" placeholder="Tag" />
                 <input value={article.readTime} onChange={(e) => updateArticle(idx, 'readTime', e.target.value)} className="bg-[#071c10] border border-[#1d462d] rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#d4af37] transition-colors" placeholder="Read Time" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#a3c2af] uppercase tracking-wider mb-1.5">Full Article Content</label>
+                <textarea value={article.fullText || ''} onChange={(e) => updateArticle(idx, 'fullText', e.target.value)} rows={3} className="w-full bg-[#071c10] border border-[#1d462d] rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-[#d4af37] transition-colors resize-none" placeholder="Full article content for the modal..." />
               </div>
               <div className="flex justify-end">
                 <button onClick={() => removeArticle(idx)} className="flex items-center gap-1 text-xs text-red-400 hover:text-red-300 transition-colors"><Trash2 size={14} /> Remove</button>
