@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const DataContext = createContext();
 
 const defaultData = {
-  logo: '',
+  logo: '/images/logo.png',
   contact: {
     phone: '8989656675',
     whatsapp: '8989656675',
